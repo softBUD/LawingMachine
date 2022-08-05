@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const BoardWrap = styled.div`
+const Wrap = styled.div`
   width: 80%;
   height: calc(100vh - 135px);
   float: right;
@@ -9,8 +9,10 @@ const BoardWrap = styled.div`
   box-shadow: 0 6px 15px #ededed;
 `;
 
-const DashBoard = () => {
-  return <BoardWrap></BoardWrap>;
+const DashBoard = (props: any): any => {
+  const { children } = props;
+
+  return <Wrap>{children}</Wrap>;
 };
 
 export default DashBoard;
