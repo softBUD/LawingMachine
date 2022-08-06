@@ -5,6 +5,7 @@ import i18n from "./i18n";
 // import Sidebar from "./components/Sidebar/Sidebar";
 import styled from "styled-components";
 import MainRoute from "./routes";
+import Translation from "./i18n/Translation";
 
 export const Wrap = styled.div`
   width: 100%;
@@ -27,6 +28,8 @@ const App = () => {
     <>
       <Header />
       <MainRoute />
+      <Translation />
+      {/* {i18n.language === "ko" ? "ko" : "en"} ( return (<div>sdsd</div> ) ) */}
     </>
   );
 };

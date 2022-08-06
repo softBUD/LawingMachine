@@ -23,7 +23,7 @@ class Question implements Inherit {
 
 const QuestionButton = () => {
   const { t } = useTranslation();
-  const TitleName1 = new Question(t("IQuestion"));
+  const TitleName1 = new Question(t("ISolving"));
 
   return <Button>{TitleName1.name}</Button>;
 };

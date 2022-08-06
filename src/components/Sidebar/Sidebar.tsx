@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useTransition } from "react";
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import "../../routes/index";
@@ -32,39 +33,29 @@ const Content = styled.div`
   }
 `;
 
-const Data = [
-  { id: 1, name: "대쉬보드", link: "/" },
-  { id: 2, name: "시험응시", link: "/solvingPages" },
-  { id: 3, name: "커뮤니티", link: "/communityPages" },
-  { id: 4, name: "마이페이지", link: "/myPages" },
-  { id: 5, name: "관리자", link: "/adminPages" },
+interface Inherit {
+  id: number;
+  name: string;
+  link: string;
+}
+
+const Data: Inherit[] = [
+  { id: 1, name: "IMenuDashboard", link: "/" },
+  { id: 2, name: "IMenuSolving", link: "/solvingPages" },
+  { id: 3, name: "IMenuCommunity", link: "/communityPages" },
+  // { id: 4, name: "IMyPage", link: "/myPages" },
+  { id: 4, name: "IMenuAdmin", link: "/adminPages" },
 ];
 
 const Sidebar = () => {
   const [toggleState, setToggleState] = useState(false);
 
-  // function IsTab() {
-  //   isTab(true);
-  // }
-
-  // const TodoItem = ({ id, text, checked, onToggle, onRemove }) => (
-  //   <li
-  //     style={{
-  //       textDecoration: checked ? "line-through" : "none",
-  //     }}
-  //     onClick={() => onToggle(id)}
-  //     onDoubleClick={() => onRemove(id)}
-  //   >
-  //     {text}
-  //   </li>
-  // );
+  const { t } = useTranslation();
 
   return (
     <Wrap>
       <Container>
         <Content>
-          {/* <span style={{color: user.active ? 'green' : 'black'}}</span> */}
-          {/* <span style={{ color: isTab.active ? "green" : "black" }}></span> */}
           <ul>
             {Data.map((title) => {
               return (
@@ -74,7 +65,7 @@ const Sidebar = () => {
                     key={title.id}
                     className={toggleState === true ? "tabs active" : "tabs"}
                   >
-                    {title.name}
+                    {t(title.name)}
                   </NavLink>
                 </li>
               );
